@@ -97,6 +97,7 @@ export default function Dashboard() {
           {activeModule === 'messages' && <MessagesModule />}
           {activeModule === 'experience' && <ExperienceModule />}
           {activeModule === 'settings' && <SettingsModule />}
+          
         </div>
       </main>
     </div>
