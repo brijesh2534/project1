@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import Login from './admin/Login';
 import Dashboard from './admin/Dashboard';
 
+
 function AppContent() {
   const [route, setRoute] = useState<'portfolio' | 'admin'>('portfolio');
   const { user, loading } = useAuth();
