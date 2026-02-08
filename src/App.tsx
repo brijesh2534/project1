@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+
+// Import the Header component
+import Header from './components/Header';
+
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
@@ -11,11 +15,11 @@ import Footer from './components/Footer';
 import Login from './admin/Login';
 import Dashboard from './admin/Dashboard';
 
-
 function AppContent() {
   const [route, setRoute] = useState<'portfolio' | 'admin'>('portfolio');
   const { user, loading } = useAuth();
 
+  // Check initial route
   useEffect(() => {
     const path = window.location.pathname;
     if (path.startsWith('/admin')) {
@@ -23,6 +27,7 @@ function AppContent() {
     }
   }, []);
 
+  // Handle browser back/forward buttons
   useEffect(() => {
     const handlePopState = () => {
       const path = window.location.pathname;
@@ -41,6 +46,7 @@ function AppContent() {
     );
   }
 
+  // Admin Routes (Header is usually not needed here)
   if (route === 'admin') {
     if (!user) {
       return <Login />;
@@ -48,8 +54,12 @@ function AppContent() {
     return <Dashboard />;
   }
 
+  // Portfolio Route
   return (
     <div className="min-h-screen bg-white">
+      {/* Header added here so it sticks to the top */}
+      <Header />
+      
       <Hero />
       <About />
       <Skills />
