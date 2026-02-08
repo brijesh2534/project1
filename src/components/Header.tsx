@@ -40,7 +40,7 @@ export default function Header() {
               <Code2 size={20} />
             </div>
             <span className="font-bold text-xl text-white tracking-tight">
-              Portfolio<span className="text-cyan-400">.</span>
+              Brijesh Tankariya
             </span>
           </div>
 
@@ -63,7 +63,7 @@ export default function Header() {
             <a href="https://github.com/brijesh2534" className="text-slate-400 hover:text-white transition-colors" target="blank">
               <Github size={20} />
             </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/brijesh-tankariya-603b57244/" className="text-slate-400 hover:text-white transition-colors" target="blank">
               <Linkedin size={20} />
             </a>
             <a href="#contact" className="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300">
@@ -98,13 +98,13 @@ export default function Header() {
               </a>
             ))}
             <div className="mt-4 flex items-center gap-4 px-3 pb-2">
-              <a href="#" className="text-slate-400 hover:text-white">
+              <a href="https://github.com/brijesh2534" className="text-slate-400 hover:text-white">
                 <Github size={20} />
               </a>
-              <a href="#" className="text-slate-400 hover:text-white">
+              <a href="https://www.linkedin.com/in/brijesh-tankariya-603b57244/" className="text-slate-400 hover:text-white">
                 <Linkedin size={20} />
               </a>
-              <a href="mailto:contact@example.com" className="text-slate-400 hover:text-white">
+              <a href="mailto:brijeshtankariya79969@gmail.com" className="text-slate-400 hover:text-white">
                 <Mail size={20} />
               </a>
             </div>

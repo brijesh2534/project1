@@ -1,4 +1,4 @@
-import { Download } from 'lucide-react'; // Removed unused imports
+
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -41,10 +41,6 @@ export default function Hero() {
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
             >
               View My Projects
-            </button>
-            <button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
-              <Download size={20} />
-              Download Resume
             </button>
           </div>
         </div>
