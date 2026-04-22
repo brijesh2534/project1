@@ -6,7 +6,7 @@ export default function Education() {
       degree: 'Master of Science in Information Technology (MSc IT)',
       institution: 'Geetanjali Group of Colleges',
       location: 'Rajkot, India',
-      status: 'Currently Pursuing',
+      status: 'Graduated: 2026',
       icon: <GraduationCap size={24} />
     },
     {

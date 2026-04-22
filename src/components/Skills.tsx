@@ -1,22 +1,26 @@
 import { useEffect, useState } from 'react';
 import { db } from '../lib/firebase';
 import { ref, onValue } from 'firebase/database';
-import { Code, Database, Shield, Zap } from 'lucide-react';
+import { Code, Database, Smartphone, Wrench, Globe, Layout, Shield, Zap } from 'lucide-react';
 
 type Skill = {
   id: string;
   name: string;
   category: string;
-  proficiency: number;
+  proficiency?: number;
   display_order: number;
 };
 
 const categoryIcons: Record<string, JSX.Element> = {
-  'Programming & Development': <Code size={24} />,
-  'Frameworks': <Zap size={24} />,
-  'Database Management': <Database size={24} />,
-  'Best Practices': <Shield size={24} />,
-  'Additional Expertise': <Code size={24} />
+  'Frontend': <Globe size={24} />,
+  'Backend': <Code size={24} />,
+  'Database': <Database size={24} />,
+  'Mobile': <Smartphone size={24} />,
+  'Tools': <Wrench size={24} />,
+  'Frameworks & Stacks': <Layout size={24} />,
+  'Mobile Development': <Smartphone size={24} />,
+  'Databases': <Database size={24} />,
+  'Core Skills': <Shield size={24} />,
 };
 
 export default function Skills() {
@@ -72,41 +76,28 @@ export default function Skills() {
           <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"></div>
         </div>
 
-        <div className="space-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {Object.entries(groupedSkills).map(([category, categorySkills], catIndex) => (
             <div
               key={category}
-              className="animate-fade-in-up"
+              className="bg-slate-700 p-6 rounded-xl border border-slate-600 hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${catIndex * 0.1}s` }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white">
-                  {categoryIcons[category] || <Code size={24} />}
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white shrink-0">
+                  {categoryIcons[category] || <Zap size={24} />}
                 </div>
                 <h3 className="text-2xl font-bold text-white">{category}</h3>
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {categorySkills.map((skill, skillIndex) => (
-                  <div
-                    key={skill.id}
-                    className="p-6 bg-slate-700 rounded-xl hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 border border-slate-600"
-                    style={{ animationDelay: `${(catIndex * 0.1) + (skillIndex * 0.05)}s` }}
+              
+              <div className="flex flex-wrap gap-2 mt-2">
+                {categorySkills.map((skill, index) => (
+                  <span 
+                    key={index}
+                    className="px-3 py-1 bg-slate-800 text-cyan-400 rounded-full text-sm font-medium border border-slate-600"
                   >
-                    <div className="flex justify-between items-center mb-3">
-                      <span className="text-lg font-semibold text-white">{skill.name}</span>
-                      <span className="text-sm font-bold text-cyan-400">{skill.proficiency}%</span>
-                    </div>
-                    <div className="w-full bg-slate-600 rounded-full h-3 overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-1000 ease-out"
-                        style={{
-                          width: `${skill.proficiency}%`,
-                          animation: `skill-bar 1.5s ease-out ${(catIndex * 0.1) + (skillIndex * 0.05)}s backwards`
-                        }}
-                      ></div>
-                    </div>
-                  </div>
+                    {skill.name}
+                  </span>
                 ))}
               </div>
             </div>

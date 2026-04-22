@@ -115,6 +115,9 @@ export default function Header() {
             <a href="https://www.linkedin.com/in/brijesh-tankariya-603b57244/" className="text-slate-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
               <Linkedin size={20} />
             </a>
+            <a href="/resume.pdf" download="Brijesh_Tankariya_Resume.pdf" className="px-4 py-2 text-slate-300 border border-slate-600 text-sm font-medium rounded-full hover:bg-slate-800 transition-colors">
+              Resume
+            </a>
             <a href="#contact" onClick={(e) => scrollToSection(e, '#contact')} className="px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-sm font-medium rounded-full hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300">
               Hire Me
             </a>

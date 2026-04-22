@@ -40,13 +40,35 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 order-2 lg:order-1 text-lg text-slate-300 leading-relaxed">
             <p>
-              I am a passionate <span className="font-semibold text-cyan-400">Full Stack Developer</span> with deep expertise in 
-              <span className="text-white"> PHP, Laravel, CodeIgniter</span>, and the <span className="text-white">MERN Stack</span>.
+              I am a Full Stack Developer with strong expertise in MERN stack, Laravel, and Flutter. I have built multiple real-world applications including real-time chat systems, healthcare platforms, and industrial solutions.
             </p>
             <p>
-              Currently pursuing my MSc in IT, I combine academic knowledge with practical experience to build robust web solutions. 
-              Whether it's crafting a complex backend API in Laravel or building a dynamic frontend with React, I love solving code challenges.
+              Alongside development, I currently work as an Assistant Professor where I teach web development, programming, and databases. This combination of teaching and real-world development strengthens my fundamentals and helps me write clean, scalable, and efficient code.
             </p>
+            <p>
+              I enjoy solving complex problems, building impactful applications, and continuously learning new technologies.
+            </p>
+            
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-white mb-4">What I Do</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center gap-3">
+                  <span className="text-cyan-400">✔</span> Build Full Stack Web Applications (MERN, Laravel)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-cyan-400">✔</span> Develop Real-Time Systems (Chat, APIs)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-cyan-400">✔</span> Design Scalable Backend Architectures
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-cyan-400">✔</span> Teach Programming & Web Development
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="text-cyan-400">✔</span> Mentor Students on Real-World Projects
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div className="order-1 lg:order-2 flex justify-center">
@@ -63,7 +85,8 @@ export default function About() {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 hidden">
+            {/* Kept hidden just in case it breaks the previous ui flow but preserved to not break variable use */}
             {highlights.map((item, i) => (
                 <div key={i} className="p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all">
                     <div className="text-cyan-400 mb-3">{item.icon}</div>
