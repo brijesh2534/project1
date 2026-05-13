@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { db } from '../lib/firebase';
 import { ref, onValue } from 'firebase/database';
-import { ExternalLink, Github, Eye } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
 
 type Project = {
   id: string;
@@ -53,104 +53,93 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-20 bg-slate-900">
+    <section id="projects" className="py-24 bg-slate-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Featured Projects
+            Featured <span className="text-gradient">Projects</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-6"></div>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Here are some of my recent works showcasing my skills in full-stack development
+          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+          <p className="mt-6 text-lg text-slate-400 max-w-2xl mx-auto">
+            A selection of my recent works across web and mobile development.
           </p>
         </div>
 
         {projects.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-slate-400 text-lg">No projects yet. Check back soon!</p>
+            <p className="text-slate-500 text-lg">No projects to display at the moment.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <div
                 key={project.id}
-                className="group bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300 transform hover:-translate-y-2 border border-slate-700"
+                className="group glass-card rounded-[2.5rem] overflow-hidden"
                 style={{
-                  animation: `fade-in-up 0.6s ease-out ${index * 0.1}s backwards`
+                  animation: `fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.1}s backwards`
                 }}
               >
-                <div className="relative h-48 bg-gradient-to-br from-blue-500 to-cyan-500 overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden m-3 rounded-[1.8rem]">
                   {project.image_url ? (
                     <img
                       src={project.image_url}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white text-6xl font-bold">
+                    <div className="w-full h-full bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center text-white/10 text-8xl font-bold italic">
                       {project.title.charAt(0)}
                     </div>
                   )}
+                  
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                    {project.live_url && (
+                      <a href={project.live_url} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white text-slate-900 rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
+                  </div>
+
                   {project.is_featured && (
-                    <div className="absolute top-4 right-4 bg-yellow-400 text-slate-900 px-3 py-1 rounded-full text-sm font-semibold">
+                    <div className="absolute top-4 left-4 bg-cyan-500 text-white px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg shadow-cyan-500/20">
                       Featured
                     </div>
                   )}
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                <div className="p-8 pt-4">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-slate-300 mb-4 line-clamp-3">
+                  <p className="text-slate-400 mb-6 line-clamp-2 text-sm leading-relaxed">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech_stack && project.tech_stack.map((tech, i) => (
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech_stack && project.tech_stack.slice(0, 4).map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-slate-700 text-cyan-400 rounded-full text-sm font-medium border border-slate-600"
+                        className="px-3 py-1 bg-white/5 text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-white/5"
                       >
                         {tech}
                       </span>
                     ))}
+                    {project.tech_stack && project.tech_stack.length > 4 && (
+                       <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider self-center">+{project.tech_stack.length - 4} more</span>
+                    )}
                   </div>
 
                   <div className="flex gap-3">
-                    {project.live_url && (
-                      <a
-                        href={project.live_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:shadow-lg transition-all duration-300 text-sm font-medium"
-                      >
-                        <ExternalLink size={16} />
-                        Live
-                      </a>
-                    )}
-                    {project.github_url && (
-                      <a
-                        href={project.github_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-700 text-slate-200 rounded-lg hover:bg-slate-600 transition-all duration-300 text-sm font-medium border border-slate-600"
-                      >
-                        <Github size={16} />
-                        Code
-                      </a>
-                    )}
-                    {project.demo_url && (
-                      <a
-                        href={project.demo_url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-700 text-slate-200 rounded-lg hover:bg-slate-600 transition-all duration-300 text-sm font-medium border border-slate-600"
-                      >
-                        <Eye size={16} />
-                        Demo
-                      </a>
-                    )}
+                    <a
+                      href={project.live_url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-white/10 text-white rounded-2xl transition-all border border-white/5 text-sm font-bold"
+                    >
+                      <Eye size={16} />
+                      Details
+                    </a>
                   </div>
                 </div>
               </div>

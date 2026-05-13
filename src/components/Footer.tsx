@@ -1,4 +1,4 @@
-import { Heart, Github, Linkedin, Mail } from 'lucide-react';
+import { Heart, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -50,14 +50,6 @@ export default function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Connect</h4>
             <div className="flex gap-4">
-              <a
-                href="https://github.com/brijesh2534"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-slate-800 hover:bg-blue-500 flex items-center justify-center transition-all duration-300 transform hover:scale-110"
-              >
-                <Github size={20} />
-              </a>
               <a
                 href="https://www.linkedin.com/in/brijesh-tankariya-603b57244/"
                 target="_blank"

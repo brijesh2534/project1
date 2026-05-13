@@ -5,6 +5,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    @apply bg-slate-900;
+  }
+
+  body {
+    @apply text-slate-300 antialiased overflow-x-hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 rounded-full border-2 border-slate-900 hover:bg-slate-600 transition-colors;
   }
 }
 
@@ -13,6 +31,17 @@
     0% {
       opacity: 0;
       transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-down {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
     }
     100% {
       opacity: 1;
@@ -29,21 +58,23 @@
     }
   }
 
-  @keyframes skill-bar {
-    0% {
-      width: 0%;
-    }
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out backwards;
+  .animate-fade-in-down {
+    animation: fade-in-down 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
   }
 
   .animate-spin-slow {
-    animation: spin-slow 3s linear infinite;
+    animation: spin-slow 8s linear infinite;
   }
 
-  .delay-1000 {
-    animation-delay: 1s;
+  .glass-card {
+    @apply bg-slate-800/50 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all duration-300;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400;
   }
 }

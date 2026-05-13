@@ -30,70 +30,73 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-24 bg-slate-900 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto"></div>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            About <span className="text-gradient">Me</span>
+          </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 order-2 lg:order-1 text-lg text-slate-300 leading-relaxed">
-            <p>
-              I am a Full Stack Developer with strong expertise in MERN stack, Laravel, and Flutter. I have built multiple real-world applications including real-time chat systems, healthcare platforms, and industrial solutions.
-            </p>
-            <p>
-              Alongside development, I currently work as an Assistant Professor where I teach web development, programming, and databases. This combination of teaching and real-world development strengthens my fundamentals and helps me write clean, scalable, and efficient code.
-            </p>
-            <p>
-              I enjoy solving complex problems, building impactful applications, and continuously learning new technologies.
-            </p>
-            
-            <div className="mt-8">
-              <h3 className="text-2xl font-bold text-white mb-4">What I Do</h3>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3">
-                  <span className="text-cyan-400">✔</span> Build Full Stack Web Applications (MERN, Laravel)
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-cyan-400">✔</span> Develop Real-Time Systems (Chat, APIs)
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-cyan-400">✔</span> Design Scalable Backend Architectures
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-cyan-400">✔</span> Teach Programming & Web Development
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="text-cyan-400">✔</span> Mentor Students on Real-World Projects
-                </li>
-              </ul>
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 space-y-6 text-lg text-slate-400 leading-relaxed">
+            <div className="glass-card p-8 rounded-3xl border-white/5">
+              <p className="mb-6">
+                I am a <span className="text-white font-semibold">Full Stack Developer</span> with strong expertise in MERN stack, Laravel, and Flutter. I have built multiple real-world applications including real-time chat systems, healthcare platforms, and industrial solutions.
+              </p>
+              <p className="mb-6">
+                Alongside development, I currently work as an <span className="text-cyan-400 font-semibold">Assistant Professor</span> where I teach web development, programming, and databases. This unique perspective helps me write cleaner, more maintainable code.
+              </p>
+              
+              <div className="mt-8 pt-8 border-t border-white/5">
+                <h3 className="text-2xl font-bold text-white mb-6">Expertise</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[
+                    "Full Stack Web (MERN, Laravel)",
+                    "Real-Time Chat Systems",
+                    "Scalable Backend Architectures",
+                    "Teaching & Mentorship"
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 text-slate-300">
+                      <div className="w-6 h-6 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 shrink-0">
+                        <span className="text-xs">✔</span>
+                      </div>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 flex justify-center">
+          <div className="lg:col-span-5 flex justify-center">
              <div className="relative w-full max-w-sm">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl blur-lg opacity-75"></div>
-                <div className="relative bg-slate-800 rounded-2xl p-2 overflow-hidden">
-                  {photoUrl ? (
-                    <img src={photoUrl} alt="Profile" className="w-full h-auto rounded-xl object-cover aspect-square" />
-                  ) : (
-                    <div className="w-full aspect-square bg-slate-700 rounded-xl flex items-center justify-center text-slate-500">No Photo</div>
-                  )}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-[2.5rem] blur-2xl opacity-20 animate-pulse"></div>
+                <div className="relative p-3 bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-sm">
+                  <div className="aspect-square rounded-[2rem] overflow-hidden bg-slate-800">
+                    {photoUrl ? (
+                      <img src={photoUrl} alt="Profile" className="w-full h-full object-cover hover:scale-110 transition-transform duration-700" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-600">
+                        <Users size={64} />
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Floating Badge */}
+                  <div className="absolute -bottom-6 -right-6 glass-card p-4 rounded-2xl shadow-2xl border-white/10 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white">
+                      <GraduationCap size={20} />
+                    </div>
+                    <div>
+                      <div className="text-xs text-slate-400 font-medium">Education</div>
+                      <div className="text-sm font-bold text-white">MSc IT Student</div>
+                    </div>
+                  </div>
                 </div>
              </div>
           </div>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12 hidden">
-            {/* Kept hidden just in case it breaks the previous ui flow but preserved to not break variable use */}
-            {highlights.map((item, i) => (
-                <div key={i} className="p-6 bg-slate-800 rounded-xl border border-slate-700 hover:border-cyan-500/50 transition-all">
-                    <div className="text-cyan-400 mb-3">{item.icon}</div>
-                    <h3 className="text-white font-bold">{item.title}</h3>
-                    <p className="text-slate-400 text-sm">{item.description}</p>
-                </div>
-            ))}
         </div>
       </div>
     </section>
